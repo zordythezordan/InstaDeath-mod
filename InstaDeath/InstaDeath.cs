@@ -36,7 +36,7 @@ namespace Instadeath
             shouldDoCybergrind = new BoolField(config.rootPanel, "Enable in Cybergrind", "instadeath_is_cybergrind", false);
 
             config.SetIconWithURL("file://" + System.IO.Path.GetDirectoryName(Info.Location) + "\\icon.png");
-            // icon not included in solution, place icon.png from thunderstore zip file in the same folder as mod
+            // icon not included in solution, place icon.png from thunderstore zip file/github releases in the same folder as mod
         }
 
         [HarmonyPatch(typeof(NewMovement), "GetHurt")]
@@ -44,10 +44,7 @@ namespace Instadeath
         static void GetHurtPatch()
         {
             if (shouldDoCybergrind.value == false && GameObject.FindObjectOfType<StatsManager>().endlessMode)
-            {
-                Console.WriteLine("this IS endless mode");
                 return;
-            }
 
             if (NewMovement.Instance.dead && restartingType.value != RESTARTING_TYPE.Disabled)
             {
