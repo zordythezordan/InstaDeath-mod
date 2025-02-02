@@ -33,6 +33,7 @@ namespace Instadeath
             restartingType.SetEnumDisplayName(RESTARTING_TYPE.RestartMission, "Restart Mission");
 
             config.SetIconWithURL("file://" + System.IO.Path.GetDirectoryName(Info.Location) + "\\icon.png");
+            // icon not included in solution, place icon.png in the same folder as mod
         }
 
         [HarmonyPatch(typeof(NewMovement), "GetHurt")]
